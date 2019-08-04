@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import './calendar.css';
 
+// ./src/components/Calendar/Calendar.js
+//   Line 5:     'style' is assigned a value but never used        
 const style = {
     position: "relative",
     margin: "50px auto"
