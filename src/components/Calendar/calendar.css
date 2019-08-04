@@ -1,107 +1,111 @@
-.calendar-container,
 .calendar,
+.calendar-container,
 .calendar-header,
 td,
 tr {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+td a {
+  /* so it fills the entire cell; easier to click */
+  display: block;
 }
 
 .calendar-container {
-    border: 2px solid skyblue;
-    
+  border: 2px solid skyblue;
+
 }
 
 .calendar {
-    background-color: white;
-    border-spacing: 1;
-    border-collapse: collapse;
-    width: 100%;
-    
+  background-color: white;
+  border-spacing: 1;
+  border-collapse: collapse;
+  width: 100%;
+
 }
 
 .calendar-header {
-    border-bottom: 1px dashed skyblue;
-    font-size: 1.6em;
+  border-bottom: 1px dashed skyblue;
+  font-size: 1.6em;
 }
 
 .calendar-header td {
-    border-spacing: 0;
-    padding-left: 5px;
+  border-spacing: 0;
+  padding-left: 5px;
 }
 
 .day,
 .empty-slot,
 .week-day {
-    text-align: center;
-    height: 40px;
+  text-align: center;
+  height: 40px;
 }
 
 .week-day {
-    font-size: 0.8em;
+  font-size: .8em;
 }
 
 .day {
-    font-size: 0.8em;
+  font-size: .8em;
 }
 
 .day {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
 }
 
 .current-day {
-    background-color: #4285f4;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 2%;
-    color: white;
+  background-color: #4285f4;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 2%;
+  color: white;
 }
+
 .selected-day {
-    background-color:yellow;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 2%;
-    color: black;
+  background-color: yellow;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 2%;
+  color: black;
 }
 
 .month-popup {
-    position: absolute;
-    padding: 10px;
-    background: white;
-    border: 2px solid skyblue;
+  position: absolute;
+  padding: 10px;
+  background: white;
+  border: 2px solid skyblue;
 }
 
 .month-popup div {
-    padding: 0.3em;
+  padding: .3em;
 }
 
 .nav-month {
-    position: absolute;
-    top: 0.6em;
-    font-size: 0.6em;
-    right:3px;
+  position: absolute;
+  top: .6em;
+  font-size: .6em;
+  right: 3px;
 }
 
-.prev {
-}
+.prev {}
 
-.next {
-}
+.next {}
 
 .editor-year {
-    max-width: 3.6em;
+  max-width: 3.6em;
 }
 
 .label-month,
 .label-year {
-    font-size: 0.6em;
+  font-size: .6em;
 }
 
 .label-month {
-    cursor: pointer;
+  cursor: pointer;
 }

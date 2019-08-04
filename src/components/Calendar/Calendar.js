@@ -2,12 +2,20 @@ import React from 'react';
 import moment from 'moment';
 import './calendar.css';
 
+import {
+    BrowserRouter,
+    Route,
+    Link,
+} from 'react-router-dom';
+
+import MyDropdown from '../MyDropdown';
+
 // ./src/components/Calendar/Calendar.js
 //   Line 5:     'style' is assigned a value but never used        
 const style = {
     position: "relative",
     margin: "50px auto"
-  }
+}
 
 export default class Calendar extends React.Component {
     state = {
@@ -169,6 +177,7 @@ export default class Calendar extends React.Component {
     }
 
     onDayClick = (e, day) => {
+        //TODO: instead get state from the route params
         this.setState({
             selectedDay: day
         }, () => {
@@ -199,10 +208,16 @@ export default class Calendar extends React.Component {
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
             let className = (d == this.currentDay() ? "day current-day" : "day");
-            let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
+            let selectedClass = (d == this.state.selectedDay ? " selected-day " : "");
+
+            // https://tylermcginnis.com/react-router-nested-routes/
             daysInMonth.push(
-                <td key={d} className={className + selectedClass} >
-                    <span onClick={(e) => { this.onDayClick(e, d) }}>{d}</span>
+                <td key={d}
+                    className={className + selectedClass}>
+                    <Link to={`${this.props.match.path}/${d}`}
+                        onClick={(e) => { this.onDayClick(e, d) }}>
+                        <span>{d}</span>
+                    </Link>
                 </td>
             );
         }
@@ -238,42 +253,54 @@ export default class Calendar extends React.Component {
         })
 
         return (
-            <div className="calendar-container" style={this.style}>
+            <BrowserRouter>
+                <div className="calendar-container" style={this.style}>
 
-                {/* <div className="CalendarApp">
+                    {/* <div className="CalendarApp">
                     <Calendar style={style} width="500px"
                         onDayClick={(e, day) => this.onDayClick(e, day)} />
                 </div> */}
 
-                <table className="calendar">
-                    <thead>
-                        <tr className="calendar-header">
-                            <td colSpan="5">
-                                <this.MonthNav />
-                                {" "}
-                                <this.YearNav />
-                            </td>
-                            <td colSpan="2" className="nav-month">
-                                <i className="prev fa fa-fw fa-chevron-left"
-                                    onClick={(e) => { this.prevMonth() }}>
-                                </i>
-                                <i className="prev fa fa-fw fa-chevron-right"
-                                    onClick={(e) => { this.nextMonth() }}>
-                                </i>
+                    <table className="calendar">
+                        <thead>
+                            <tr className="calendar-header">
+                                <td colSpan="5">
+                                    <this.MonthNav />
+                                    {" "}
+                                    <this.YearNav />
+                                </td>
+                                <td colSpan="2" className="nav-month">
+                                    <i className="prev fa fa-fw fa-chevron-left"
+                                        onClick={(e) => { this.prevMonth() }}>
+                                    </i>
+                                    <i className="prev fa fa-fw fa-chevron-right"
+                                        onClick={(e) => { this.nextMonth() }}>
+                                    </i>
 
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            {weekdays}
-                        </tr>
-                        {trElems}
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {weekdays}
+                            </tr>
+                            {trElems}
+                        </tbody>
+                    </table>
 
-            </div>
+                </div>
 
+                <Route path={`${this.props.match.path}/:date_iso_format`}
+                    render={({ match }) => <p>You picked {match.params.date_iso_format}</p>}
+                />
+
+                <Route
+                    exact
+                    path={this.props.match.path}
+                    render={() => <h3>Please select a topic.</h3>}
+                />
+
+            </BrowserRouter>
         );
     }
 }
