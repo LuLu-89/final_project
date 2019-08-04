@@ -55,7 +55,9 @@ class App extends Component {
 
             <Route exact path="/" component={Home} />
             <Route path="/data" component={Data} />
+
             <Route path="/calendar" component={Calendar} />
+            {/* <Route path="/calendar" component={(props) => <Calendar {...props} ></Calendar>} /> */}
 
           </div>
 

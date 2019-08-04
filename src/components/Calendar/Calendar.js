@@ -3,7 +3,7 @@ import moment from 'moment';
 import './calendar.css';
 
 import {
-    BrowserRouter,
+    div,
     Route,
     Link,
 } from 'react-router-dom';
@@ -17,7 +17,19 @@ const style = {
     margin: "50px auto"
 }
 
-export default class Calendar extends React.Component {
+export default ({ match }) => {
+    return <div>
+        <h2>{match.url}</h2>
+        <Link to={`${match.path}/inner`} >
+            goto inner
+        </Link>
+
+        <Route path={`${match.path}/inner`} component={({ match }) =>  <p>INNER: {match.path}</p> } />
+
+    </div>
+}
+// export default Calendar = (props)=>{}
+class CalendarComponent extends React.Component {
     state = {
         dateContext: moment(),
         today: moment(),
@@ -253,7 +265,7 @@ export default class Calendar extends React.Component {
         })
 
         return (
-            <BrowserRouter>
+            <div>
                 <div className="calendar-container" style={this.style}>
 
                     {/* <div className="CalendarApp">
@@ -300,7 +312,7 @@ export default class Calendar extends React.Component {
                     render={() => <h3>Please select a topic.</h3>}
                 />
 
-            </BrowserRouter>
+            </div>
         );
     }
 }
