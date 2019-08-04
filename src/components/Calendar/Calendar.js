@@ -10,6 +10,7 @@ import {
 
 // import MyDropdown from '../MyDropdown';
 import DayDataForm from '../DayDataForm/DayDataForm';
+import DataAPI from '../../api';
 
 // ./src/components/Calendar/Calendar.js
 //   Line 5:     'style' is assigned a value but never used        
@@ -208,19 +209,23 @@ class CalendarComponent extends React.Component {
 
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let className = (d == this.currentDay() ? "day current-day" : "day");
-            let selectedClass = (d == this.state.selectedDay ? " selected-day " : "");
-
-            // pad with zeroes if needed
-            const dayValue = d;
 
             // let dateIsoFormat = `${this.year()}-${this.month()}-${dayValue}`;
+            // dateContext knows  the Year-Month combination, 
+            // Now we just set the day value
             let dateIsoFormat = `${this.state.dateContext.clone().set('date', d).format('YYYY-MM-DD')}`;
+
+            let className = (d == this.currentDay() ? "day current-day" : "day");
+            let selectedClass = (d == this.state.selectedDay ? " selected-day " : "");
+            
+            let isHasValueForThisDay = DataAPI.get(dateIsoFormat);
+            let hasValueClass = isHasValueForThisDay ? ' has-value-day ': '';
+            
 
             // https://tylermcginnis.com/react-router-nested-routes/
             daysInMonth.push(
                 <td key={d}
-                    className={className + selectedClass}>
+                    className={className + selectedClass + hasValueClass}>
                     <Link to={`${this.props.match.path}/${dateIsoFormat}`}
                         onClick={(e) => { this.onDayClick(e, d) }}>
                         <span>{d}</span>
@@ -260,7 +265,7 @@ class CalendarComponent extends React.Component {
         })
 
         return (
-            <div>
+            <div className="calendar-and-data-container">
                 <div className="calendar-container" style={this.style}>
 
                     {/* <div className="CalendarApp">
@@ -304,7 +309,7 @@ class CalendarComponent extends React.Component {
                 <Route
                     exact
                     path={this.props.match.path}
-                    render={() => <h3>Please select a topic.</h3>}
+                    render={() => <h3>Please select a date.</h3>}
                 />
 
             </div>

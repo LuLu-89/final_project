@@ -67,16 +67,16 @@ class DayDataFormComponent extends React.Component {
         const feature_3__val = this.state.data.feature_3 === undefined ? 'N/A' : this.state.data.feature_3.toString();
         const target__val = this.state.data.target === undefined ? 'N/A' : this.state.data.target.toString();
 
-        return (<div>
+        return (<div className="day-data-container">
             <h1>
                 {this.getDateIsoFormatFromRoute()}
             </h1>
             <div>
-                <p><label> Feature 1: </label> {feature_1__val}</p>
-                <p> <label> Feature 2: </label> {feature_2__val}</p>
-                <p><label> Feature 3: </label> {feature_3__val}</p>
+                <h3><label> Feature 1: </label> {feature_1__val}</h3>
+                <h3> <label> Feature 2: </label> {feature_2__val}</h3>
+                <h3><label> Feature 3: </label> {feature_3__val}</h3>
                 <hr />
-                <p><label> Target: </label> {target__val}</p>
+                <h3><label> Target: </label> {target__val}</h3>
             </div>
         </div>);
 

@@ -51,6 +51,19 @@ tr {
 }
 
 /* Nate added: */
+
+.calendar-and-data-container {
+    padding:1em;
+    width:100%;
+    display:flex;
+    flex-direction:row;
+
+}
+.day-data-container {
+    flex:1;
+    padding-left:2em;
+}
+
 .day a {
     /* so it fills the entire cell; easier to click */
     display: block;
@@ -71,10 +84,10 @@ tr {
 /* Nate recommendation , increase size for more accessibility / demos better */
 .calendar-container {
   width: 600px;
-  font-size: 1.5em;
 }
 
 .day {
+  font-size: 1.5em;
   height: 64px;
 }
 .day a {
@@ -90,6 +103,9 @@ tr {
   color: white;
 }
 
+.has-value-day {
+    background-color: #a9c3ee;
+}
 .selected-day {
   background-color: yellow;
   width: 28px;
