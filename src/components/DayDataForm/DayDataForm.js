@@ -12,6 +12,8 @@ import DataAPI from '../../api';
 class DayDataFormComponent extends React.Component {
 
     constructor(props) {
+
+        //--
         super(props);
 
         this.state = {
@@ -29,18 +31,29 @@ class DayDataFormComponent extends React.Component {
         // How to fetch data in React?
         // https://www.robinwieruch.de/react-fetching-data/
         // see this method, you must change how it works
-        var dayData = DataAPI.get(this.props.match.params.date_iso_format);
+        var dayData = DataAPI.get(this.getDateIsoFormatFromRoute());
 
         this.setState({ data: dayData });
 
     }
 
-    render(){
-        return <h1>{this.props.match.params.date_iso_format}</h1>
+    getDateIsoFormatFromRoute() {
+        // gets the "params" passed in by React UI Routing
+        // can't put in constructor because constructor is not re-run 
+        return this.props.match
+            && this.props.match.params
+            && this.props.match.params.date_iso_format;
+
+    }
+
+    render() {
+        return <h1>{this.getDateIsoFormatFromRoute()}</h1>;
     }
 
 }
 
 export default (props) => {
+    // https://flaviocopes.com/react-pass-props-to-children/
+    // 
     return <DayDataFormComponent {...props}></DayDataFormComponent>
 }

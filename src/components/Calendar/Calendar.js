@@ -211,11 +211,17 @@ class CalendarComponent extends React.Component {
             let className = (d == this.currentDay() ? "day current-day" : "day");
             let selectedClass = (d == this.state.selectedDay ? " selected-day " : "");
 
+            // pad with zeroes if needed
+            const dayValue = d;
+
+            // let dateIsoFormat = `${this.year()}-${this.month()}-${dayValue}`;
+            let dateIsoFormat = `${this.state.dateContext.clone().set('date', d).format('YYYY-MM-DD')}`;
+
             // https://tylermcginnis.com/react-router-nested-routes/
             daysInMonth.push(
                 <td key={d}
                     className={className + selectedClass}>
-                    <Link to={`${this.props.match.path}/${d}`}
+                    <Link to={`${this.props.match.path}/${dateIsoFormat}`}
                         onClick={(e) => { this.onDayClick(e, d) }}>
                         <span>{d}</span>
                     </Link>
@@ -307,5 +313,6 @@ class CalendarComponent extends React.Component {
 }
 
 export default (props) => {
+    // https://flaviocopes.com/react-pass-props-to-children/
     return <CalendarComponent {...props}></CalendarComponent>
 }
