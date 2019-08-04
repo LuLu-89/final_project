@@ -16,8 +16,11 @@ class DayDataFormComponent extends React.Component {
         //--
         super(props);
 
+        // we will populate the `state`, and *change* the `state` depending on which date the URL is currently pointing at
         this.state = {
-            data: null,
+            date_iso_format: undefined,
+            data: {}
+
         };
 
     }
@@ -26,15 +29,27 @@ class DayDataFormComponent extends React.Component {
     // > Called immediately after a component is mounted. 
     // > Setting state here will trigger re-rendering.
     // we will set state to update and show new data
-    componentDidMount() {
-        // 
-        // How to fetch data in React?
-        // https://www.robinwieruch.de/react-fetching-data/
-        // see this method, you must change how it works
-        var dayData = DataAPI.get(this.getDateIsoFormatFromRoute());
 
-        this.setState({ data: dayData });
+    //https://egghead.io/lessons/javascript-redux-fetching-data-on-route-change
+    // componentDidMount() {
+    componentDidUpdate() {
 
+        // ERROR: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nes
+        // > You may call setState() immediately in componentDidUpdate() but note that it must be wrapped in a condition 
+        // https://reactjs.org/docs/react-component.html#componentdidupdate
+
+        if (this.state.date_iso_format !== this.getDateIsoFormatFromRoute()) {
+
+            // How to fetch data in React?
+            // https://www.robinwieruch.de/react-fetching-data/
+            // see this method, you must change how it works
+            const dayData = DataAPI.get(this.getDateIsoFormatFromRoute()) || {};
+
+            this.setState({
+                date_iso_format: this.getDateIsoFormatFromRoute(),
+                data: dayData
+            });
+        }
     }
 
     getDateIsoFormatFromRoute() {
@@ -47,7 +62,24 @@ class DayDataFormComponent extends React.Component {
     }
 
     render() {
-        return <h1>{this.getDateIsoFormatFromRoute()}</h1>;
+        const feature_1__val = this.state.data.feature_1 === undefined ? 'N/A' : this.state.data.feature_1.toString();
+        const feature_2__val = this.state.data.feature_2 === undefined ? 'N/A' : this.state.data.feature_2.toString();
+        const feature_3__val = this.state.data.feature_3 === undefined ? 'N/A' : this.state.data.feature_3.toString();
+        const target__val = this.state.data.target === undefined ? 'N/A' : this.state.data.target.toString();
+
+        return (<div>
+            <h1>
+                {this.getDateIsoFormatFromRoute()}
+            </h1>
+            <div>
+                <p><label> Feature 1: </label> {feature_1__val}</p>
+                <p> <label> Feature 2: </label> {feature_2__val}</p>
+                <p><label> Feature 3: </label> {feature_3__val}</p>
+                <hr />
+                <p><label> Target: </label> {target__val}</p>
+            </div>
+        </div>);
+
     }
 
 }

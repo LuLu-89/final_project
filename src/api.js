@@ -11,8 +11,8 @@ const DataAPI = {
         '2019-08-02': {
             // your `X`
             feature_1: false,
-            feature_1: true,
-            feature_1: false,
+            feature_2: false,
+            feature_3: false,
 
             // your `y`
             target: true
@@ -21,8 +21,8 @@ const DataAPI = {
         '2019-08-03': {
             // your `X`
             feature_1: false,
-            feature_1: true,
-            feature_1: false,
+            feature_2: true,
+            feature_3: false,
 
             // your `y`
             target: true
@@ -31,8 +31,28 @@ const DataAPI = {
         '2019-08-04': {
             // your `X`
             feature_1: false,
+            feature_2: false,
+            feature_3: false,
+
+            // your `y`
+            target: true
+
+        },
+        '2019-08-05': {
+            // your `X`
             feature_1: true,
+            feature_2: true,
+            feature_3: false,
+
+            // your `y`
+            target: false
+
+        },
+        '2019-08-06': {
+            // your `X`
             feature_1: false,
+            feature_2: true,
+            feature_3: true,
 
             // your `y`
             target: true
@@ -88,6 +108,15 @@ const DataAPI = {
     },
     set: function (date_iso_format, new_value) {
         // 
+        // add some inputs to the `DayDataForm` component
+        // when any of those inputs change, pass a new_value object, which should look like this:
+        // {
+        //     feature_1: ___,
+        //     feature_2: ___,
+        //     feature_3, ___,
+
+        //     target
+        // }
         this.date_data[date_iso_format] = new_value;
 
     }
