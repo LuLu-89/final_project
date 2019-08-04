@@ -17,17 +17,6 @@ const style = {
     margin: "50px auto"
 }
 
-export default ({ match }) => {
-    return <div>
-        <h2>{match.url}</h2>
-        <Link to={`${match.path}/inner`} >
-            goto inner
-        </Link>
-
-        <Route path={`${match.path}/inner`} component={({ match }) =>  <p>INNER: {match.path}</p> } />
-
-    </div>
-}
 // export default Calendar = (props)=>{}
 class CalendarComponent extends React.Component {
     state = {
@@ -315,4 +304,8 @@ class CalendarComponent extends React.Component {
             </div>
         );
     }
+}
+
+export default (props) => {
+    return <CalendarComponent {...props}></CalendarComponent>
 }
