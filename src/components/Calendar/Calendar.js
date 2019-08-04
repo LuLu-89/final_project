@@ -8,7 +8,8 @@ import {
     Link,
 } from 'react-router-dom';
 
-import MyDropdown from '../MyDropdown';
+// import MyDropdown from '../MyDropdown';
+import DayDataForm from '../DayDataForm/DayDataForm';
 
 // ./src/components/Calendar/Calendar.js
 //   Line 5:     'style' is assigned a value but never used        
@@ -17,7 +18,6 @@ const style = {
     margin: "50px auto"
 }
 
-// export default Calendar = (props)=>{}
 class CalendarComponent extends React.Component {
     state = {
         dateContext: moment(),
@@ -292,7 +292,7 @@ class CalendarComponent extends React.Component {
                 </div>
 
                 <Route path={`${this.props.match.path}/:date_iso_format`}
-                    render={({ match }) => <p>You picked {match.params.date_iso_format}</p>}
+                    render={DayDataForm}
                 />
 
                 <Route
