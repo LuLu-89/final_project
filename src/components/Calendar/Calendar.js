@@ -29,7 +29,7 @@ class CalendarComponent extends React.Component {
 
     constructor(props) {
         super(props);
-        this.width = props.width || "350px";
+        this.width = '600px'; //props.width || "350px";
         this.style = props.style || {};
         this.style.width = this.width; // add this
     }

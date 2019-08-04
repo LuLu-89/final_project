@@ -7,11 +7,6 @@ tr {
   margin: 0;
 }
 
-td a {
-  /* so it fills the entire cell; easier to click */
-  display: block;
-}
-
 .calendar-container {
   border: 2px solid skyblue;
 
@@ -48,13 +43,42 @@ td a {
 
 .day {
   font-size: .8em;
-}
-
-.day {
   cursor: pointer;
   width: 24px;
   height: 24px;
   line-height: 24px;
+
+}
+
+/* Nate added: */
+.day a {
+    /* so it fills the entire cell; easier to click */
+    display: block;
+    height:100%;
+  }
+
+  
+
+.day a,
+.day a:active,
+.day a:hover,
+.day a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* Nate recommendation , increase size for more accessibility / demos better */
+.calendar-container {
+  width: 600px;
+  font-size: 1.5em;
+}
+
+.day {
+  height: 64px;
+}
+.day a {
+    line-height:64px;
 }
 
 .current-day {
