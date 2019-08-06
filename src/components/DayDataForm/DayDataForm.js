@@ -9,6 +9,17 @@ import '../style.css'
 
 import DataAPI from '../../api';
 
+const constGetObservationDefaultValues = () => {
+    return {
+        //https://stackoverflow.com/a/37427579/1175496
+        stress: false,
+        lackSleep: false,
+        workout: false,
+        event: false
+
+    };
+}
+
 class DayDataFormComponent extends React.Component {
 
     constructor(props) {
@@ -20,7 +31,7 @@ class DayDataFormComponent extends React.Component {
         // depending on which date the URL is currently pointing at
         this.state = {
             date_iso_format: undefined,
-            data: {}
+            data: constGetObservationDefaultValues()
         };
 
     }
@@ -81,7 +92,10 @@ class DayDataFormComponent extends React.Component {
             // How to fetch data in React?
             // https://www.robinwieruch.de/react-fetching-data/
             // see this method, you must change how it works
-            const dayData = DataAPI.get(this.getDateIsoFormatFromRoute()) || {};
+            const dayData = (DataAPI.get(this.getDateIsoFormatFromRoute())
+                // or else get default values....
+                // https://stackoverflow.com/a/37427579/1175496
+                || constGetObservationDefaultValues());
 
             this.setState({
                 date_iso_format: this.getDateIsoFormatFromRoute(),
@@ -115,7 +129,11 @@ class DayDataFormComponent extends React.Component {
                         <div>
                             <h3>
                                 <label className='checkbox'> stress:
-                    {/* onChange={onCheckboxChange} */}
+                    {/* onChange={onCheckboxChange} 
+                WARNING:  You provided a `checked` prop to a form field without an `onChange` handler.
+                 This will render a read-only field. If the field should be mutable use `defaultChecked`. 
+                 Otherwise, set either `onChange` or `readOnly`
+                */}
                                     <input
                                         type="checkbox"
                                         name="stress"
@@ -182,5 +200,5 @@ class DayDataFormComponent extends React.Component {
 export default (props) => {
     // https://flaviocopes.com/react-pass-props-to-children/
     // 
-    return <CalendarComponent {...props}></CalendarComponent>
+    return <DayDataFormComponent {...props}></DayDataFormComponent>
 }

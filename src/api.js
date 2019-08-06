@@ -10,52 +10,52 @@ const DataAPI = {
     date_data: {
         '2019-08-02': {
             // your `X`
-            feature_1: false,
-            feature_2: false,
-            feature_3: false,
+            stress: false,
+            lackSleep: false,
+            workout: false,
 
             // your `y`
-            target: true
+            event: true
 
         },
         '2019-08-03': {
             // your `X`
-            feature_1: false,
-            feature_2: true,
-            feature_3: false,
+            stress: false,
+            lackSleep: true,
+            workout: false,
 
             // your `y`
-            target: true
+            event: true
 
         },
         '2019-08-04': {
             // your `X`
-            feature_1: false,
-            feature_2: false,
-            feature_3: false,
+            stress: false,
+            lackSleep: false,
+            workout: false,
 
             // your `y`
-            target: true
+            event: true
 
         },
         '2019-08-05': {
             // your `X`
-            feature_1: true,
-            feature_2: true,
-            feature_3: false,
+            stress: true,
+            lackSleep: true,
+            workout: false,
 
             // your `y`
-            target: false
+            event: false
 
         },
         '2019-08-06': {
             // your `X`
-            feature_1: false,
-            feature_2: true,
-            feature_3: true,
+            stress: false,
+            lackSleep: true,
+            workout: true,
 
             // your `y`
-            target: true
+            event: true
 
         },
 
