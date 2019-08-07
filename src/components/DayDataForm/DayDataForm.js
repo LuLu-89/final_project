@@ -53,6 +53,8 @@ class DayDataFormComponent extends React.Component {
         });
     };
 
+    onCheckboxChange = () => this.handleCheckboxChange(true)
+
     selectAll = () => this.selectAllCheckboxes(true);
 
     deselectAll = () => this.selectAllCheckboxes(false);
@@ -138,6 +140,7 @@ class DayDataFormComponent extends React.Component {
                                         type="checkbox"
                                         name="stress"
                                         checked={this.state.data.stress}
+                                        onChange={onCheckboxChange}
                                         className="form-check-input"
                                     />
                                 </label>
@@ -148,6 +151,7 @@ class DayDataFormComponent extends React.Component {
                                         type="checkbox"
                                         name="lack sleep"
                                         checked={this.state.data.lackSleep}
+                                        onChange={onCheckboxChange}
                                         className="form-check-input" />
                                 </label>
                             </h3>
@@ -157,6 +161,7 @@ class DayDataFormComponent extends React.Component {
                                         type="checkbox"
                                         name="workout"
                                         checked={this.state.data.workout}
+                                        onChange={onCheckboxChange}
                                         className="form-check-input" />
                                 </label>
                             </h3>
@@ -167,6 +172,7 @@ class DayDataFormComponent extends React.Component {
                                         type="checkbox"
                                         name="event"
                                         checked={this.state.data.event}
+                                        onChange={onCheckboxChange}
                                         className="form-check-input" />
                                 </label>
                             </h3>
