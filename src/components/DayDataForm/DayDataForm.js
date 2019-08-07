@@ -186,6 +186,8 @@ class DayDataFormComponent extends React.Component {
                                     Deselect All
                 </button>
                                 <button type="submit" className="btn btn-primary">
+                                   <Route path={`${this.props.match.path}/:date_iso_format`}
+                                    render={(props) => <DayDataForm {...props} updateConstant={this.updateConstant} />} />
                                     Save
                 </button>
                             </div>
