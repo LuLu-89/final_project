@@ -52,18 +52,18 @@ class DayDataFormComponent extends React.Component {
 
     deselectAll = () => this.selectAllCheckboxes(false);
 
-    handleCheckboxChange = changeEvent => {//(input) => {
-        // saveInput(input)
-        //     .then(() => this.setState(() => ({
-        //         toDayDataForm: true
-        //     })))
-        const { name } = changeEvent.target;
+    handleCheckboxChange = (input) => {//changeEvent => {
+        saveInput(input)
+            .then(() => this.setState(() => ({
+                toDayDataForm: true
+            })))
+        // const { name } = changeEvent.target;
 
 
             this.setState(prevState => ({
                 checkboxes: {
                     ...prevState.checkboxes,
-                    [name]: !prevState.checkboxes[name]
+                    [input]: !prevState.checkboxes[input]
                 }
             }));
         };
@@ -111,8 +111,9 @@ class DayDataFormComponent extends React.Component {
         }
 
         render() {
+            // https://tylermcginnis.com/react-router-programmatically-navigate/
             if (this.state.toDayDataForm === true) {
-                // <Redirect to='/calendar' />
+                <Redirect to='./DayDataForm' />
             }
 
             const stress__val = this.state.data.stress === undefined ? 'N/A' : this.state.data.stress.toString();
