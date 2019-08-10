@@ -12,6 +12,8 @@
     "react-dom": "next",
     "react-router-dom": "latest",
     "react-scripts": "2.0.3"
+    "react-select": "^3.0.4",
+    "reactjs-dropdown-component": "^1.0.6"
   },
   "devDependencies": {},
   "scripts": {
