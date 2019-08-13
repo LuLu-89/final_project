@@ -3,7 +3,7 @@ by: Loney Lucy
 
 August 07, 2019 (incomplete)
 
-##Purpose: 
+## Purpose: 
 Continuously retrain a model based on user input
 
 ## Prediction Problem: 
