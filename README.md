@@ -1,5 +1,5 @@
 # Final Project
-by: Loney Lucy
+by: Lonely Lucy
 
 August 07, 2019 (incomplete)
 
