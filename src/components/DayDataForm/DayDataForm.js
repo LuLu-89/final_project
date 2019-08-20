@@ -22,6 +22,7 @@ class DayDataFormComponent extends React.Component {
             date_iso_format: undefined,
             data: {},
             toDayDataForm: false,
+            checkboxes: {}
         };
 
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
@@ -40,12 +41,13 @@ class DayDataFormComponent extends React.Component {
 
 
     handleCheckboxChange = (input) => {//changeEvent => {
+        console.log({input})
         DataAPI(input)
             .then(() => this.setState(() => ({
                 toDayDataForm: true
             })))
         // const { name } = changeEvent.target;
-
+        
 
         this.setState(prevState => ({
             checkboxes: {
@@ -57,7 +59,7 @@ class DayDataFormComponent extends React.Component {
 
     handleFormSubmit = formSubmitEvent => {
         formSubmitEvent.preventDefault();
-
+            console.log(this.state.checkboxes)
         Object.keys(this.state.checkboxes)
             .filter(checkbox => this.state.checkboxes[checkbox])
             .forEach(checkbox => {
@@ -122,7 +124,7 @@ class DayDataFormComponent extends React.Component {
                                         type="checkbox"
                                         name="stress"
                                         checked={this.state.data.stress}
-                                        // onChange={onCheckboxChange}
+                                        onChange={() => this.onCheckboxChange()}
                                         className="form-check-input"
                                     />
                                 </label>
