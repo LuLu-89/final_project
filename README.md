@@ -4,7 +4,7 @@ by: Lonely Lucy
 August 07, 2019 (incomplete)
 
 ## Purpose: 
-Continuously retrain a model based on user input
+Continuously re-train a model based on user input
 
 ## Prediction Problem: 
 Logistical Regression (Classification)
